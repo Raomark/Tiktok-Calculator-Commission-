@@ -54,33 +54,43 @@
                         <input type="number" class="form-control" id="packing-cost" placeholder="ใส่ต้นทุนแพ็คของ">
                     </div>
 
+					<!-- <div class="form-check">
+						<input type="checkbox" class="form-check-input" id="extraFreeCheckbox">
+						<label class="form-check-label" for="extraFreeCheckbox">เพิ่ม Extra Free</label>
+					</div> -->
+		
+
                     <button type="button" class="btn btn-primary w-100" onclick="calculateProfit()">คำนวณกำไร</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="resultModalLabel">ผลลัพธ์การคำนวณ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>ราคาสินค้าหลังหักส่วนลดของร้านค้า: <span id="modal-price-after-discount">0</span> บาท</p>
-                    <p>อัตราค่าคอมมิชชั่น: <span id="modal-commission">0</span> บาท</p>
-                    <p>อัตราค่าธรรมเนียมคำสั่งซื้อ: <span id="modal-order-fee">0</span> บาท</p>
-                    <p>รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
-                    <p>กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Modal -->
+	<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="resultModalLabel">ผลลัพธ์การคำนวณ</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>ราคาสินค้าหลังหักส่วนลดของร้านค้า: <span id="modal-price-after-discount">0</span> บาท</p>
+					<p>อัตราค่าคอมมิชชั่น: <span id="modal-commission">0</span> บาท</p>
+					<p>อัตราค่าธรรมเนียมคำสั่งซื้อ: <span id="modal-order-fee">0</span> บาท</p>
+					<p>รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
+					<p>กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
+					
+					<!-- ส่วนแสดงคำแนะนำ -->
+					<div id="advice-section"></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
     <!-- ลิงก์ไปยัง Bootstrap JS และ Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
