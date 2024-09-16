@@ -18,7 +18,7 @@
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="text-center mb-4">คำนวณกำไรจาก TikTok</h1>
+                <h2 class="text-center mb-4">คำนวณกำไรจาก TikTok</h2>
                 
                 <form>
                     <div class="mb-3">
@@ -37,14 +37,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="commission-rate" class="form-label">อัตราค่าคอมมิชชั่น:</label>
-                        <select id="commission-rate" class="form-select">
-                            <option value="4.28">4.28%</option>
-                            <option value="5.35">5.35%</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
                         <label for="cost" class="form-label">ต้นทุนสินค้า (บาท):</label>
                         <input type="number" class="form-control" id="cost" placeholder="ใส่ต้นทุนสินค้า">
                     </div>
@@ -54,12 +46,19 @@
                         <input type="number" class="form-control" id="packing-cost" placeholder="ใส่ต้นทุนแพ็คของ">
                     </div>
 
-					<!-- <div class="form-check">
-						<input type="checkbox" class="form-check-input" id="extraFreeCheckbox">
-						<label class="form-check-label" for="extraFreeCheckbox">เพิ่ม Extra Free</label>
-					</div> -->
-		
+                    <div class="mb-3">
+                        <label for="commission-rate" class="form-label">อัตราค่าคอมมิชชั่น:</label>
+                        <select id="commission-rate" class="form-select">
+                            <option value="4.28">4.28%</option>
+                            <option value="5.35">5.35%</option>
+                        </select>
+                    </div>
 
+					<div class="mb-3 form-check">
+						<input type="checkbox" class="form-check-input" id="extraFree">
+						<label class="form-check-label" for="extraFree">Extra Free 5.35%</label>
+					</div>					
+		
                     <button type="button" class="btn btn-primary w-100" onclick="calculateProfit()">คำนวณกำไร</button>
                 </form>
             </div>
@@ -75,11 +74,16 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<p>ราคาสินค้าหลังหักส่วนลดของร้านค้า: <span id="modal-price-after-discount">0</span> บาท</p>
+					<p>ราคาสินค้า: <span id="modal-price">0</span> บาท</p>
+					<p>ส่วนลดจากผู้ขาย: <span id="modal-discount">0</span> บาท</p>
+					<p class="fw-bold">ราคาสินค้าหลังหักส่วนลดของร้านค้า: <span id="modal-price-after-discount">0</span> บาท</p>
+					<hr>
 					<p>อัตราค่าคอมมิชชั่น: <span id="modal-commission">0</span> บาท</p>
 					<p>อัตราค่าธรรมเนียมคำสั่งซื้อ: <span id="modal-order-fee">0</span> บาท</p>
-					<p>รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
-					<p>กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
+					<p>Extra Free: <span id="modal-order-Extrafee">0</span> บาท</p>
+					<p class="fw-bold">รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
+					<hr>
+					<p class="fw-bold">กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
 					
 					<!-- ส่วนแสดงคำแนะนำ -->
 					<div id="advice-section"></div>
