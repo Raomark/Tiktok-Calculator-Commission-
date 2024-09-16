@@ -52,24 +52,28 @@ function calculateProfit() {
     // รวมค่าธรรมเนียม
     let totalFee = commission + orderFee + extraFree;
 
-
     // คำนวณกำไร
-    let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost - extraFree;
+    let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
+
+	console.log(cost)
+	console.log(packingCost)
+	console.log( `${priceAfterDiscount} + ${shipping} - ${totalFee} - ${cost} - ${packingCost}`)
 
     // แสดงผลลัพธ์ใน Modal
 	document.getElementById("modal-price").innerHTML = price.toFixed(2);
 	document.getElementById("modal-discount").innerHTML = discount.toFixed(2);
     document.getElementById("modal-price-after-discount").innerText = priceAfterDiscount.toFixed(2);
-    document.getElementById("modal-commission").innerText = commission.toFixed(2);
-    document.getElementById("modal-order-fee").innerText = orderFee.toFixed(2);
-    document.getElementById("modal-total-fee").innerText = totalFee.toFixed(2);
-    document.getElementById("modal-order-Extrafee").innerText = extraFree.toFixed(2);
-    document.getElementById("modal-profit").innerText = profit.toFixed(2);
+    document.getElementById("modal-commission").innerText = commission.toFixed(3);
+    document.getElementById("modal-order-fee").innerText = orderFee.toFixed(3);
+    document.getElementById("modal-total-fee").innerText = totalFee.toFixed(3);
+    document.getElementById("modal-order-Extrafee").innerText = extraFree.toFixed(3);
+    document.getElementById("modal-profit").innerText = profit.toFixed(3);
 
     // กรณีกำไรติดลบ
     let adviceText = "";
     if (profit < 0) {
         adviceText = `
+			<hr>
             <p style="color: red;">กำไรของคุณติดลบ! นี่คือคำแนะนำเพื่อปรับปรุง:</p>
             <ul>
                 <li>เพิ่มราคาสินค้าหรือส่วนลดให้น้อยลง</li>
@@ -80,6 +84,12 @@ function calculateProfit() {
         `;
     }
 
+	if(profit < 0){
+		document.getElementById("modal-profit").style.color = "#dc3545";
+	}else{
+		document.getElementById("modal-profit").style.color = "#008000";
+	}
+
     // ใส่คำแนะนำลงใน Modal
     document.getElementById("advice-section").innerHTML = adviceText;
 
@@ -87,3 +97,4 @@ function calculateProfit() {
     let resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     resultModal.show();
 }
+

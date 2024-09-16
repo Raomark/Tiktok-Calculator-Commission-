@@ -3,32 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>กำไรจาก TikTok</title>
+    <title>Needed Store</title>
     <!-- ลิงก์ไปยัง Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- ลิงก์ไปยังฟอนต์ Noto Sans Thai -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Sans Thai', sans-serif;
-        }
-    </style>
+	<link rel="icon" type="image/x-icon" href="/images/need-logo-01.ico">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container my-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="text-center mb-4">คำนวณกำไรจาก TikTok</h2>
+                <h2 class="text-center mb-4 fw-bold">คำนวณกำไรจาก TikTok</h2>
                 
                 <form>
                     <div class="mb-3">
                         <label for="price" class="form-label">ราคาสินค้า (บาท):</label>
-                        <input type="number" class="form-control" id="price" placeholder="ใส่ราคาสินค้า">
+                        <input type="number" class="form-control" id="price" placeholder="ใส่ราคาสินค้า" >
                     </div>
 
                     <div class="mb-3">
                         <label for="discount" class="form-label">ส่วนลดผู้ขาย (บาท):</label>
-                        <input type="number" class="form-control" id="discount" placeholder="ใส่ส่วนลดผู้ขาย">
+                        <input type="number" class="form-control" id="discount" placeholder="ใส่ส่วนลดผู้ขาย" >
                     </div>
 
                     <div class="mb-3">
@@ -38,7 +35,7 @@
 
                     <div class="mb-3">
                         <label for="cost" class="form-label">ต้นทุนสินค้า (บาท):</label>
-                        <input type="number" class="form-control" id="cost" placeholder="ใส่ต้นทุนสินค้า">
+                        <input type="number" class="form-control" id="cost" placeholder="ใส่ต้นทุนสินค้า" >
                     </div>
 
                     <div class="mb-3">
@@ -57,8 +54,8 @@
 					<div class="mb-3 form-check">
 						<input type="checkbox" class="form-check-input" id="extraFree">
 						<label class="form-check-label" for="extraFree">Extra Free 5.35%</label>
-					</div>					
-		
+					</div>								
+
                     <button type="button" class="btn btn-primary w-100" onclick="calculateProfit()">คำนวณกำไร</button>
                 </form>
             </div>
@@ -74,7 +71,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					<p>ราคาสินค้า: <span id="modal-price">0</span> บาท</p>
+					<p>ราคาสินค้า: <span id="modal-price"></span> บาท</p>
 					<p>ส่วนลดจากผู้ขาย: <span id="modal-discount">0</span> บาท</p>
 					<p class="fw-bold">ราคาสินค้าหลังหักส่วนลดของร้านค้า: <span id="modal-price-after-discount">0</span> บาท</p>
 					<hr>
@@ -83,7 +80,7 @@
 					<p>Extra Free: <span id="modal-order-Extrafee">0</span> บาท</p>
 					<p class="fw-bold">รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
 					<hr>
-					<p class="fw-bold">กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
+					<p class="fw-bold fs-4">กำไรที่ได้: <span id="modal-profit">0</span> บาท</p>
 					
 					<!-- ส่วนแสดงคำแนะนำ -->
 					<div id="advice-section"></div>
