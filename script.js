@@ -52,6 +52,9 @@ function calculateProfit() {
     // รวมค่าธรรมเนียม
     let totalFee = commission + orderFee + extraFree;
 
+    // ต้นทุนรวม
+    let totalCost = cost + packingCost;
+
     // คำนวณกำไร
     let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
 
@@ -67,6 +70,9 @@ function calculateProfit() {
     document.getElementById("modal-order-fee").innerText = orderFee.toFixed(3);
     document.getElementById("modal-total-fee").innerText = totalFee.toFixed(3);
     document.getElementById("modal-order-Extrafee").innerText = extraFree.toFixed(3);
+    document.getElementById("modal-costProduct").innerText = cost.toFixed(2);
+    document.getElementById("modal-costPacking").innerText = packingCost.toFixed(2);
+    document.getElementById("modal-total-cost").innerText = totalCost.toFixed(2);
     document.getElementById("modal-profit").innerText = profit.toFixed(3);
 
     // กรณีกำไรติดลบ
@@ -84,11 +90,25 @@ function calculateProfit() {
         `;
     }
 
+	//กำไรติดลบให้แสดงเป็นสีแดง
 	if(profit < 0){
 		document.getElementById("modal-profit").style.color = "#dc3545";
 	}else{
 		document.getElementById("modal-profit").style.color = "#008000";
 	}
+	//ราคาสินค้าติดลบแสดงเป็นสีแดง
+	if(priceAfterDiscount < 0){
+		document.getElementById("modal-price-after-discount").style.color =  "#dc3545";
+	}else{
+		document.getElementById("modal-price-after-discount").style.color =  "#008000";
+	}
+	//ค่าธรรมเนียมติดลบให้แสดงเป็นสีแดง
+	if(totalFee < 0){
+		document.getElementById("modal-total-fee").style.color = "#dc3545";
+	}else{
+		document.getElementById("modal-total-fee").style.color = "#008000";
+	}
+
 
     // ใส่คำแนะนำลงใน Modal
     document.getElementById("advice-section").innerHTML = adviceText;
