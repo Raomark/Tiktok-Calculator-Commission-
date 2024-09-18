@@ -43,6 +43,11 @@ function calculateProfit() {
     // อัตราค่าธรรมเนียมคำสั่งซื้อ
     let orderFee = (priceAfterDiscount + shipping) * 0.0321;
 
+      // ถ้า orderFee น้อยกว่า 12 ให้ใช้ 12 ในการคำนวณ
+    if (orderFee <= 12) {
+        orderFee = 12;
+    }
+
 	 // คำนวณ Extra Free ถ้าเช็คบ็อกซ์ถูกเลือก
 	 let extraFree = 0;
 	 if (extraFreeChecked) {
@@ -53,14 +58,14 @@ function calculateProfit() {
     let totalFee = commission + orderFee + extraFree;
 
     // ต้นทุนรวม
-    let totalCost = cost + packingCost;
+    let totalCosts = cost + packingCost;
 
     // คำนวณกำไร
     let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
 
-	console.log(cost)
-	console.log(packingCost)
-	console.log( `${priceAfterDiscount} + ${shipping} - ${totalFee} - ${cost} - ${packingCost}`)
+	// คำนวณช่วงราคาที่ได้กำไร 0 บาทและกำไร 200%
+	let totalCost = totalFee + cost + packingCost + extraFree;
+
 
     // แสดงผลลัพธ์ใน Modal
 	document.getElementById("modal-price").innerHTML = price.toFixed(2);
@@ -72,7 +77,7 @@ function calculateProfit() {
     document.getElementById("modal-order-Extrafee").innerText = extraFree.toFixed(3);
     document.getElementById("modal-costProduct").innerText = cost.toFixed(2);
     document.getElementById("modal-costPacking").innerText = packingCost.toFixed(2);
-    document.getElementById("modal-total-cost").innerText = totalCost.toFixed(2);
+    document.getElementById("modal-total-cost").innerText = totalCosts.toFixed(2);
     document.getElementById("modal-profit").innerText = profit.toFixed(3);
 
     // กรณีกำไรติดลบ
@@ -109,6 +114,12 @@ function calculateProfit() {
 		document.getElementById("modal-total-fee").style.color = "#008000";
 	}
 
+    if(orderFee < 12){
+        document.getElementById("modal-order-fee").innerText = 12;
+        let profit = (priceAfterDiscount + shipping) - totalFee - 12 - packingCost;
+    }else {
+        let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
+    }
 
     // ใส่คำแนะนำลงใน Modal
     document.getElementById("advice-section").innerHTML = adviceText;
