@@ -38,6 +38,19 @@
                         <input type="number" class="form-control" id="cost" placeholder="ใส่ต้นทุนสินค้า" >
                     </div>
 
+                     <!-- เพิ่มค่าขนส่งที่ร้านค้าจ่าย -->
+            <div class="mb-3">
+                <label for="shipping-cost" class="form-label">ค่าขนส่งที่ร้านค้าจ่าย</label>
+                <select class="form-select" id="shipping-cost">
+                    <option value="0">ไม่มีค่าขนส่ง</option>
+                    <option value="20">น้อยว่า 1 กิโล 35 บาท</option>
+                    <option value="40">น้อยว่า 2 กิโล 40 บาท</option>
+                    <option value="45">น้อยว่า 3 กิโล 45 บาท</option>
+                    <option value="50">น้อยว่า 4 กิโล 50 บาท</option>
+                    <option value="55">น้อยว่า 5 กิโล 55 บาท</option>
+                    <option value="60">น้อยว่า 6 กิโล 60 บาท</option>
+                </select>
+            </div>
                     <div class="mb-3">
                         <label for="packing-cost" class="form-label">ต้นทุนแพ็คของ (บาท):</label>
                         <input type="number" class="form-control" id="packing-cost" placeholder="ใส่ต้นทุนแพ็คของ">
@@ -81,6 +94,7 @@
 					<p class="fw-bold">รวมค่าธรรมเนียมของคำสั่งซื้อนี้: <span id="modal-total-fee">0</span> บาท</p>
 					<hr>
 					<p>ต้นทุนสินค้า: <span id="modal-costProduct">0</span> บาท</p>
+					<p>ค่าขนส่งที่ร้านค้าจ่าย: <span id="modal-shippingCost">0</span> บาท</p>
 					<p>ต้นทุนแพ็คของ: <span id="modal-costPacking">0</span> บาท</p>
 					<p class="fw-bold">ต้นทุนรวม: <span id="modal-total-cost">0</span> บาท</p>
 					<hr>

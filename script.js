@@ -6,6 +6,7 @@ function calculateProfit() {
     let commissionRate = document.getElementById("commission-rate");
     let cost = document.getElementById("cost");
     let packingCost = document.getElementById("packing-cost");
+    const shippingCost = parseFloat(document.getElementById("shipping-cost").value); // ค่าขนส่งที่ร้านค้าจ่าย
     let extraFreeChecked = document.getElementById("extraFree").checked;
 
     // ตรวจสอบว่ากรอกทุกช่องหรือไม่ ถ้าไม่กรอกให้เปลี่ยนสีเป็นสีแดง
@@ -58,14 +59,10 @@ function calculateProfit() {
     let totalFee = commission + orderFee + extraFree;
 
     // ต้นทุนรวม
-    let totalCosts = cost + packingCost;
+    let totalCosts = cost + packingCost + shippingCost;
 
     // คำนวณกำไร
-    let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
-
-	// คำนวณช่วงราคาที่ได้กำไร 0 บาทและกำไร 200%
-	let totalCost = totalFee + cost + packingCost + extraFree;
-
+    const profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost - shippingCost - extraFree;
 
     // แสดงผลลัพธ์ใน Modal
 	document.getElementById("modal-price").innerHTML = price.toFixed(2);
@@ -78,6 +75,8 @@ function calculateProfit() {
     document.getElementById("modal-costProduct").innerText = cost.toFixed(2);
     document.getElementById("modal-costPacking").innerText = packingCost.toFixed(2);
     document.getElementById("modal-total-cost").innerText = totalCosts.toFixed(2);
+    document.getElementById("modal-shippingCost").innerText = shippingCost.toFixed(2);
+    document.getElementById("modal-profit").innerText = profit.toFixed(3);
     document.getElementById("modal-profit").innerText = profit.toFixed(3);
 
     // กรณีกำไรติดลบ
@@ -113,13 +112,12 @@ function calculateProfit() {
 	}else{
 		document.getElementById("modal-total-fee").style.color = "#008000";
 	}
+	if(totalCosts < 0){
+		document.getElementById("modal-total-cost").style.color = "#dc3545";
+	}else{
+		document.getElementById("modal-total-cost").style.color = "#008000";
+	}
 
-    if(orderFee < 12){
-        document.getElementById("modal-order-fee").innerText = 12;
-        let profit = (priceAfterDiscount + shipping) - totalFee - 12 - packingCost;
-    }else {
-        let profit = (priceAfterDiscount + shipping) - totalFee - cost - packingCost;
-    }
 
     // ใส่คำแนะนำลงใน Modal
     document.getElementById("advice-section").innerHTML = adviceText;
@@ -128,4 +126,3 @@ function calculateProfit() {
     let resultModal = new bootstrap.Modal(document.getElementById('resultModal'));
     resultModal.show();
 }
-
